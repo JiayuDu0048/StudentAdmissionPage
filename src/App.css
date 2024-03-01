@@ -1,0 +1,101 @@
+/* customization in NavBar*/
+.custom-NavBar{
+background-color: #57068C
+}
+
+/* customization in Welcome*/
+.image-container{
+  position: relative;
+  text-align: center;
+}
+.welcomeTextMargin{
+  padding-right:30%;
+  padding-left:30%;
+}
+@font-face {
+  font-family: "Grandstander";
+  src: url("src/assets/Grandstander-VariableFont_wght.ttf") format("truetype");
+}
+.custom-font{
+  font-family: 'Grandstander', sans-serif;
+  color: #452720;
+}
+.fade-in {
+  opacity: 0; /* 初始不可见 */
+  animation: fadeInAnimation 1s ease forwards; /* 使用fadeInAnimation动画，持续1秒 */
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0; /* 从不可见开始 */
+    transform: translateY(-50px); /* 向上移动50像素 */
+  }
+  to {
+    opacity: 1; /* 渐变到完全可见 */
+    transform: translateY(0); /* 回到原来的位置 */
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  top: 83%;
+  left: 53%;
+  opacity: 0;
+  animation: IconAnimation 1s ease forwards infinite; 
+}
+
+@keyframes IconAnimation {
+  from {
+    opacity: 0; 
+    transform: translateX(-10px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); 
+  }
+}
+
+/* customization in Level 1 & Level 2*/
+.LevelButton{
+    width: 10%;
+    height:5%;
+    background-color: #E3C563;
+    border-radius: 15px;
+    border: 3px solid #925753;
+    font-family: 'Grandstander', sans-serif;
+    font-weight: 550;
+    font-size: 100%;
+    color: #452720;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 4px 4px #925753;
+}
+.LevelButton:hover {
+  transform: translate(4px,4px);
+  box-shadow: 0px 0px #925753;
+}
+
+.DeadlineText{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 100%;
+  color: #ffffff;
+}
+
+.titleHead{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 800;
+  font-size: 200%;
+  color:#452720;
+
+}
+
+.title{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 110%;
+  padding-left: 38%;
+  padding-right: 38%;
+  color:#452720;
+  transform: translateY(-21px);
+  line-height: 1.2;
+}
