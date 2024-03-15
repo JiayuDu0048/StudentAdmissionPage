@@ -1,4 +1,4 @@
-function NavBar() {
+function NavBarlogout() {
   return (
     <>
       <nav className="navbar custom-NavBar">
@@ -22,9 +22,12 @@ function NavBar() {
               className="d-inline-block align-text-top"
             ></img>
           </a>
+          <button className="btn btn-secondary" type="button">
+            Log Out
+          </button>
         </div>
       </nav>
     </>
   );
 }
-export default NavBar;
+export default NavBarlogout;

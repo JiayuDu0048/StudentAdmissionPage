@@ -10,6 +10,12 @@ function Level2() {
   //all finished = state4
   const [currentState, setCurrentState] = useState("state1");
 
+  //button link to unityInstruction
+  const navigate = useNavigate();
+  const handleUnity = () => {
+    navigate("/UnityInstruction");
+  };
+
   const canvasRef = useRef(null);
   useEffect(() => {
     drawBackground();
@@ -65,8 +71,7 @@ function Level2() {
       pipelineH = new Image(),
       pipelineV = new Image(),
       pipelineFullH = new Image(),
-      pipelineFullV = new Image(),
-      bigtank = new Image();
+      pipelineFullV = new Image();
     const vectorStateU = [
       "https://s2.loli.net/2024/02/14/3Lmx6JblGoVXF2y.png",
       "https://s2.loli.net/2024/02/14/5zSIYWg2qDnTPAJ.png",
@@ -92,7 +97,6 @@ function Level2() {
     pipelineV.src = "https://s2.loli.net/2024/03/08/dzYXcgOQiwWHJKR.png";
     pipelineFullH.src = "https://s2.loli.net/2024/03/08/JY7avPeGfjD5MFI.png";
     pipelineFullV.src = "https://s2.loli.net/2024/03/08/XrGHWiKz129SCfN.png";
-    bigtank.src = "https://s2.loli.net/2024/03/08/FCTQnOvB3ukxsPy.png";
 
     if (currentState === "state1") {
       //for vectorUnity
@@ -154,9 +158,6 @@ function Level2() {
       };
       vectorSurvey.onload = () => {
         ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-      };
-      bigtank.onload = () => {
-        ctx.drawImage(bigtank, 390, 1860);
       };
     } else if (currentState === "state2") {
       //for vectorTutorial
@@ -228,9 +229,6 @@ function Level2() {
       vectorSurvey.onload = () => {
         ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
       };
-      bigtank.onload = () => {
-        ctx.drawImage(bigtank, 390, 1860);
-      };
     } else if (currentState === "state3") {
       //for vectorSurvey
       vectorTutorial.src = vectorStateT[1];
@@ -291,9 +289,6 @@ function Level2() {
       vectorUnity.onload = () => {
         ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
       };
-      bigtank.onload = () => {
-        ctx.drawImage(bigtank, 390, 1860);
-      };
     } else if (currentState === "state4") {
       vectorTutorial.src = vectorStateT[1];
       vectorUnity.src = vectorStateU[1];
@@ -333,9 +328,6 @@ function Level2() {
       vectorSurvey.onload = () => {
         ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
       };
-      bigtank.onload = () => {
-        ctx.drawImage(bigtank, 390, 1860);
-      };
     }
   }
 
@@ -364,6 +356,7 @@ function Level2() {
               <button
                 id="myButton"
                 className="LevelButton buttonUnity-position"
+                onClick={handleUnity}
               >
                 Download Unity & Unity Package
               </button>
@@ -373,6 +366,7 @@ function Level2() {
               <button className="LevelButton buttonSurvey-position disabled">
                 Finish a short Survey
               </button>
+              <div className="tank"></div>
             </>
           )}
           {currentState === "state2" && (
@@ -386,6 +380,7 @@ function Level2() {
               <button className="LevelButton buttonSurvey-position disabled">
                 Finish a short Survey
               </button>
+              <div className="tank"></div>
             </>
           )}
           {currentState === "state3" && (
@@ -396,6 +391,26 @@ function Level2() {
               >
                 Finish a short Survey
               </button>
+              <div className="tank"></div>
+            </>
+          )}
+          {currentState === "state4" && (
+            <>
+              <div className="tank">
+                <div className="water-back"></div>
+                <div className="water-forword"></div>
+                <div>
+                  <p className="tank-text1" style={{ animationDelay: "2s" }}>
+                    Well done!!
+                  </p>
+                  <p className="tank-text2" style={{ animationDelay: "3s" }}>
+                    Now everything is finished.
+                  </p>
+                  <p className="tank-text3" style={{ animationDelay: "4s" }}>
+                    SEE YOU THIS SUMMER
+                  </p>
+                </div>
+              </div>
             </>
           )}
         </div>

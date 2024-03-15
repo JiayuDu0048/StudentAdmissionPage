@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 function Level1() {
   //replace by portal link of this student in database
   const portalLink =
@@ -226,7 +225,7 @@ function Level1() {
     if (currentState === "state3") {
       const timeoutId = setTimeout(() => {
         document.addEventListener("click", handleClick);
-      }, 4000);
+      }, 2000);
       return () => {
         clearTimeout(timeoutId);
         document.removeEventListener("click", handleClick);
