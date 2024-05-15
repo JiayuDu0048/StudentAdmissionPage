@@ -8,7 +8,7 @@ function Level2() {
   //if unity is finished but tutorial is not finished = state2
   //if only survey is not finished = state3
   //all finished = state4
-  const [currentState, setCurrentState] = useState("state1");
+  const [currentState, setCurrentState] = useState("state2");
 
   //button link to unityInstruction
   const navigate = useNavigate();
@@ -364,7 +364,7 @@ function Level2() {
                 Finish Coursera Tutorial
               </button>
               <button className="LevelButton buttonSurvey-position disabled">
-                Finish a short Survey
+                Join our Slack Channel
               </button>
               <div className="tank"></div>
             </>
@@ -378,7 +378,7 @@ function Level2() {
                 Finish Coursera Tutorial
               </button>
               <button className="LevelButton buttonSurvey-position disabled">
-                Finish a short Survey
+                Join our Slack Channel
               </button>
               <div className="tank"></div>
             </>
@@ -389,7 +389,7 @@ function Level2() {
                 id="myButton"
                 className="LevelButton buttonSurvey-position"
               >
-                Finish a short Survey
+                Join our Slack Channel
               </button>
               <div className="tank"></div>
             </>

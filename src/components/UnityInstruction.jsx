@@ -38,8 +38,8 @@ function UnityInstruction() {
             <strong>What to do with it:</strong>
           </p>
           <p>
-            Download it -> Open it with Unity -> Enter your N Number in the
-            pop-up window and click confirm
+            Download it - Open it with Unity - Enter your N Number in the pop-up
+            window and click confirm
           </p>
           <p>
             <strong>Why we need this package:</strong>
