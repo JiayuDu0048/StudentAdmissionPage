@@ -1,335 +1,232 @@
-import React, { useEffect } from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Level2() {
+  const canvasRef = useRef(null);
+
   //if unity is not finished = state1
   //if unity is finished but tutorial is not finished = state2
   //if only survey is not finished = state3
   //all finished = state4
-  const [currentState, setCurrentState] = useState("state2");
-
-  //button link to unityInstruction
+  const [currentState, setCurrentState] = useState("state3");
   const navigate = useNavigate();
   const handleUnity = () => {
     navigate("/UnityInstruction");
   };
-
-  const canvasRef = useRef(null);
   useEffect(() => {
-    drawBackground();
-    drawFixedPipes();
-    drawDifferentState();
-  }, []);
+    const loadImages = (srcList) => {
+      const promises = srcList.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = () => resolve(img);
+        });
+      });
+      return Promise.all(promises);
+    };
 
-  //Draw background and title board
-  function drawBackground() {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const background = new Image();
-    const board = new Image();
-    background.src = "https://s2.loli.net/2024/03/08/9l7sickOzomAJ1d.png";
-    board.src = "https://s2.loli.net/2024/03/01/KEc19oQPzG3YguX.png";
-    background.onload = () => {
+    const drawCanvas = async () => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext("2d");
+
+      const backgroundSrc =
+        "https://s2.loli.net/2024/03/08/9l7sickOzomAJ1d.png";
+      const boardSrc = "https://s2.loli.net/2024/03/01/KEc19oQPzG3YguX.png";
+      const vector1Src = "https://s2.loli.net/2024/03/08/qB6PFbxwkGVI24Z.png";
+      const node1Src = "https://s2.loli.net/2024/03/08/9rDopYNQJGuHlhB.png";
+
+      const nodeEmpty1Src =
+        "https://s2.loli.net/2024/03/08/Cz6wnxhZKU3aoPD.png";
+      const nodeEmpty2Src =
+        "https://s2.loli.net/2024/03/08/bV2tWwfGhlRpmOq.png";
+      const nodeEmpty3Src =
+        "https://s2.loli.net/2024/03/08/eIAa3QhDOzxgPpi.png";
+      const nodeEmpty4Src =
+        "https://s2.loli.net/2024/03/08/Aicqb7Zle2zPCWn.png";
+      const nodeFull1Src = "https://s2.loli.net/2024/03/08/ZWBkM74qjY92b3R.png";
+      const nodeFull2Src = "https://s2.loli.net/2024/03/08/OdcvpQrHxSAnV9e.png";
+      const nodeFull3Src = "https://s2.loli.net/2024/03/08/4lf9dqTOEvaHix1.png";
+      const nodeFull4Src = "https://s2.loli.net/2024/03/08/ETgQiMjUzpuvNfD.png";
+      const pipelineHSrc = "https://s2.loli.net/2024/03/08/YzpDiHOMhW1ClJd.png";
+      const pipelineVSrc = "https://s2.loli.net/2024/03/08/dzYXcgOQiwWHJKR.png";
+      const pipelineFullHSrc =
+        "https://s2.loli.net/2024/03/08/JY7avPeGfjD5MFI.png";
+      const pipelineFullVSrc =
+        "https://s2.loli.net/2024/03/08/XrGHWiKz129SCfN.png";
+      const vectorStateU1Src =
+        "https://s2.loli.net/2024/02/14/3Lmx6JblGoVXF2y.png";
+      const vectorStateU2Src =
+        "https://s2.loli.net/2024/02/14/5zSIYWg2qDnTPAJ.png";
+      const vectorStateT1Src =
+        "https://s2.loli.net/2024/03/08/iUaGv6YNHn2f3Tz.png";
+      const vectorStateT2Src =
+        "https://s2.loli.net/2024/03/08/DCRvoh4I8yTcf79.png";
+      const vectorStateS1Src =
+        "https://s2.loli.net/2024/03/08/GheOC3ul6E4fpK9.png";
+      const vectorStateS2Src =
+        "https://s2.loli.net/2024/03/08/crWO4m97dtflny5.png";
+
+      const [
+        background,
+        board,
+        vector1,
+        node1,
+        nodeEmpty1,
+        nodeEmpty2,
+        nodeEmpty3,
+        nodeEmpty4,
+        nodeFull1,
+        nodeFull2,
+        nodeFull3,
+        nodeFull4,
+        pipelineH,
+        pipelineV,
+        pipelineFullH,
+        pipelineFullV,
+        vectorStateU1,
+        vectorStateU2,
+        vectorStateT1,
+        vectorStateT2,
+        vectorStateS1,
+        vectorStateS2,
+      ] = await loadImages([
+        backgroundSrc,
+        boardSrc,
+        vector1Src,
+        node1Src,
+        nodeEmpty1Src,
+        nodeEmpty2Src,
+        nodeEmpty3Src,
+        nodeEmpty4Src,
+        nodeFull1Src,
+        nodeFull2Src,
+        nodeFull3Src,
+        nodeFull4Src,
+        pipelineHSrc,
+        pipelineVSrc,
+        pipelineFullHSrc,
+        pipelineFullVSrc,
+        vectorStateU1Src,
+        vectorStateU2Src,
+        vectorStateT1Src,
+        vectorStateT2Src,
+        vectorStateS1Src,
+        vectorStateS2Src,
+      ]);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(background, 0, -10, 2880, 3142);
-    };
-    board.onload = () => {
       ctx.drawImage(board, 1040, 10, 800, 400);
-    };
-  }
-
-  function drawFixedPipes() {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const vector1 = new Image();
-    const node1 = new Image();
-    vector1.src = "https://s2.loli.net/2024/03/08/qB6PFbxwkGVI24Z.png";
-    node1.src = "https://s2.loli.net/2024/03/08/9rDopYNQJGuHlhB.png";
-    vector1.onload = () => {
       ctx.drawImage(vector1, 2350, 420, 360, 360);
-    };
-    node1.onload = () => {
       ctx.drawImage(node1, 2350, 780, 360, 360);
-    };
-  }
-
-  function drawDifferentState() {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const vectorUnity = new Image(),
-      vectorTutorial = new Image(),
-      vectorSurvey = new Image(),
-      nodeEmpty1 = new Image(),
-      nodeEmpty2 = new Image(),
-      nodeEmpty3 = new Image(),
-      nodeEmpty4 = new Image(),
-      nodeFull1 = new Image(),
-      nodeFull2 = new Image(),
-      nodeFull3 = new Image(),
-      nodeFull4 = new Image(),
-      pipelineH = new Image(),
-      pipelineV = new Image(),
-      pipelineFullH = new Image(),
-      pipelineFullV = new Image();
-    const vectorStateU = [
-      "https://s2.loli.net/2024/02/14/3Lmx6JblGoVXF2y.png",
-      "https://s2.loli.net/2024/02/14/5zSIYWg2qDnTPAJ.png",
-    ];
-    const vectorStateT = [
-      "https://s2.loli.net/2024/03/08/iUaGv6YNHn2f3Tz.png",
-      "https://s2.loli.net/2024/03/08/DCRvoh4I8yTcf79.png",
-    ];
-    const vectorStateS = [
-      "https://s2.loli.net/2024/03/08/GheOC3ul6E4fpK9.png",
-      "https://s2.loli.net/2024/03/08/crWO4m97dtflny5.png",
-    ];
-
-    nodeEmpty1.src = "https://s2.loli.net/2024/03/08/Cz6wnxhZKU3aoPD.png";
-    nodeEmpty2.src = "https://s2.loli.net/2024/03/08/bV2tWwfGhlRpmOq.png";
-    nodeEmpty3.src = "https://s2.loli.net/2024/03/08/eIAa3QhDOzxgPpi.png";
-    nodeEmpty4.src = "https://s2.loli.net/2024/03/08/Aicqb7Zle2zPCWn.png";
-    nodeFull1.src = "https://s2.loli.net/2024/03/08/ZWBkM74qjY92b3R.png";
-    nodeFull2.src = "https://s2.loli.net/2024/03/08/OdcvpQrHxSAnV9e.png";
-    nodeFull3.src = "https://s2.loli.net/2024/03/08/4lf9dqTOEvaHix1.png";
-    nodeFull4.src = "https://s2.loli.net/2024/03/08/ETgQiMjUzpuvNfD.png";
-    pipelineH.src = "https://s2.loli.net/2024/03/08/YzpDiHOMhW1ClJd.png";
-    pipelineV.src = "https://s2.loli.net/2024/03/08/dzYXcgOQiwWHJKR.png";
-    pipelineFullH.src = "https://s2.loli.net/2024/03/08/JY7avPeGfjD5MFI.png";
-    pipelineFullV.src = "https://s2.loli.net/2024/03/08/XrGHWiKz129SCfN.png";
-
-    if (currentState === "state1") {
-      //for vectorUnity
-      let currentImageIndex = 0;
-      vectorUnity.src = vectorStateU[currentImageIndex];
-      vectorTutorial.src = vectorStateT[0];
-      vectorSurvey.src = vectorStateS[0];
-      vectorUnity.onload = () => {
-        ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-        const button = document.getElementById("myButton");
-        button.addEventListener("mouseover", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateU.length;
-          vectorUnity.src = vectorStateU[currentImageIndex];
-          ctx.fillStyle = "#311f1f";
-          ctx.fillRect(1990, 780, 360, 360);
-          vectorUnity.onload = () => {
-            ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-          };
-        });
-        button.addEventListener("mouseout", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateU.length;
-          vectorUnity.src = vectorStateU[currentImageIndex];
-          ctx.fillStyle = "#311f1f";
-          ctx.fillRect(1990, 780, 360, 360);
-          vectorUnity.onload = () => {
-            ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-          };
-        });
-      };
-
-      nodeEmpty1.onload = () => {
+      if (currentState === "state1") {
         ctx.drawImage(nodeEmpty1, 1660, 420, 360, 360);
         ctx.drawImage(nodeEmpty1, 1300, 780, 360, 360);
         ctx.drawImage(nodeEmpty1, 1990, 1140, 360, 360);
-      };
-      nodeEmpty2.onload = () => {
         ctx.drawImage(nodeEmpty2, 940, 420, 360, 360);
         ctx.drawImage(nodeEmpty2, 580, 780, 360, 360);
-      };
-      nodeEmpty3.onload = () => {
         ctx.drawImage(nodeEmpty3, 1660, 780, 360, 360);
         ctx.drawImage(nodeEmpty3, 580, 1500, 360, 360);
         ctx.drawImage(nodeEmpty3, 1300, 1140, 360, 360);
-      };
-      nodeEmpty4.onload = () => {
         ctx.drawImage(nodeEmpty4, 940, 1500, 360, 360);
-      };
-      pipelineH.onload = () => {
         ctx.drawImage(pipelineH, 1300, 420, 360, 360);
         ctx.drawImage(pipelineH, 940, 780, 360, 360);
         ctx.drawImage(pipelineH, 1660, 1140, 360, 360);
-      };
-      pipelineV.onload = () => {
         ctx.drawImage(pipelineV, 940, 780, 360, 360);
         ctx.drawImage(pipelineV, 940, 1140, 360, 360);
-      };
-      vectorTutorial.onload = () => {
-        ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
-      };
-      vectorSurvey.onload = () => {
-        ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-      };
-    } else if (currentState === "state2") {
-      //for vectorTutorial
-      vectorUnity.src = vectorStateU[1];
-      vectorSurvey.src = vectorStateS[0];
-      let currentImageIndex = 0;
-      vectorTutorial.src = vectorStateT[currentImageIndex];
-      vectorTutorial.onload = () => {
-        ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
+        ctx.drawImage(vectorStateT1, 580, 1140, 360, 360);
+        ctx.drawImage(vectorStateS1, 1990, 1500, 360, 360);
+        ctx.drawImage(vectorStateU1, 1990, 780, 360, 360);
         const button = document.getElementById("myButton");
         button.addEventListener("mouseover", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateT.length;
-          vectorTutorial.src = vectorStateT[currentImageIndex];
           ctx.fillStyle = "#311f1f";
-          ctx.fillRect(580, 1140, 360, 360);
-          vectorTutorial.onload = () => {
-            ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
-          };
+          ctx.fillRect(1990, 780, 360, 360);
+          ctx.drawImage(vectorStateU2, 1990, 780, 360, 360);
         });
         button.addEventListener("mouseout", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateT.length;
-          vectorTutorial.src = vectorStateT[currentImageIndex];
           ctx.fillStyle = "#311f1f";
-          ctx.fillRect(580, 1140, 360, 360);
-          vectorTutorial.onload = () => {
-            ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
-          };
+          ctx.fillRect(1990, 780, 360, 360);
+          ctx.drawImage(vectorStateU1, 1990, 780, 360, 360);
         });
-      };
-      nodeFull1.onload = () => {
+      } else if (currentState === "state2") {
         ctx.drawImage(nodeFull1, 1660, 420, 360, 360);
-      };
-      nodeFull2.onload = () => {
         ctx.drawImage(nodeFull2, 940, 420, 360, 360);
-      };
-      nodeFull3.onload = () => {
         ctx.drawImage(nodeFull3, 1660, 780, 360, 360);
         ctx.drawImage(nodeFull3, 580, 1500, 360, 360);
-      };
-      nodeFull4.onload = () => {
         ctx.drawImage(nodeFull4, 940, 1500, 360, 360);
-      };
-      pipelineFullH.onload = () => {
         ctx.drawImage(pipelineFullH, 1300, 420, 360, 360);
-      };
-      pipelineFullV.onload = () => {
         ctx.drawImage(pipelineFullV, 940, 780, 360, 360);
         ctx.drawImage(pipelineFullV, 940, 1140, 360, 360);
-      };
-      nodeEmpty1.onload = () => {
         ctx.drawImage(nodeEmpty1, 1300, 780, 360, 360);
         ctx.drawImage(nodeEmpty1, 1990, 1140, 360, 360);
-      };
-      nodeEmpty2.onload = () => {
         ctx.drawImage(nodeEmpty2, 580, 780, 360, 360);
-      };
-      nodeEmpty3.onload = () => {
         ctx.drawImage(nodeEmpty3, 1300, 1140, 360, 360);
-      };
-
-      pipelineH.onload = () => {
         ctx.drawImage(pipelineH, 940, 780, 360, 360);
         ctx.drawImage(pipelineH, 1660, 1140, 360, 360);
-      };
-      pipelineV.onload = () => {};
-      vectorUnity.onload = () => {
-        ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-      };
-      vectorSurvey.onload = () => {
-        ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-      };
-    } else if (currentState === "state3") {
-      //for vectorSurvey
-      vectorTutorial.src = vectorStateT[1];
-      vectorUnity.src = vectorStateU[1];
-      let currentImageIndex = 0;
-      vectorSurvey.src = vectorStateS[currentImageIndex];
-      vectorSurvey.onload = () => {
-        ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
+        ctx.drawImage(vectorStateU2, 1990, 780, 360, 360);
+        ctx.drawImage(vectorStateS1, 1990, 1500, 360, 360);
+        ctx.drawImage(vectorStateT1, 580, 1140, 360, 360);
         const button = document.getElementById("myButton");
         button.addEventListener("mouseover", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateS.length;
-          vectorSurvey.src = vectorStateS[currentImageIndex];
           ctx.fillStyle = "#311f1f";
-          ctx.fillRect(1990, 1500, 360, 360);
-          vectorSurvey.onload = () => {
-            ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-          };
+          ctx.fillRect(580, 1140, 360, 360);
+          ctx.drawImage(vectorStateT2, 580, 1140, 360, 360);
         });
         button.addEventListener("mouseout", () => {
-          currentImageIndex = (currentImageIndex + 1) % vectorStateS.length;
-          vectorSurvey.src = vectorStateS[currentImageIndex];
+          ctx.fillStyle = "#311f1f";
+          ctx.fillRect(580, 1140, 360, 360);
+          ctx.drawImage(vectorStateT1, 580, 1140, 360, 360);
+        });
+      } else if (currentState === "state3") {
+        ctx.drawImage(nodeFull1, 1660, 420, 360, 360);
+        ctx.drawImage(nodeFull1, 1300, 780, 360, 360);
+        ctx.drawImage(nodeFull1, 1990, 1140, 360, 360);
+        ctx.drawImage(nodeFull2, 940, 420, 360, 360);
+        ctx.drawImage(nodeFull2, 580, 780, 360, 360);
+        ctx.drawImage(nodeFull3, 1660, 780, 360, 360);
+        ctx.drawImage(nodeFull3, 580, 1500, 360, 360);
+        ctx.drawImage(nodeFull3, 1300, 1140, 360, 360);
+        ctx.drawImage(nodeFull4, 940, 1500, 360, 360);
+        ctx.drawImage(pipelineFullH, 1300, 420, 360, 360);
+        ctx.drawImage(pipelineFullH, 940, 780, 360, 360);
+        ctx.drawImage(pipelineFullH, 1660, 1140, 360, 360);
+        ctx.drawImage(pipelineFullV, 940, 780, 360, 360);
+        ctx.drawImage(pipelineFullV, 940, 1140, 360, 360);
+        ctx.drawImage(vectorStateT2, 580, 1140, 360, 360);
+        ctx.drawImage(vectorStateU2, 1990, 780, 360, 360);
+        ctx.drawImage(vectorStateS1, 1990, 1500, 360, 360);
+        const button = document.getElementById("myButton");
+        button.addEventListener("mouseover", () => {
           ctx.fillStyle = "#311f1f";
           ctx.fillRect(1990, 1500, 360, 360);
-          vectorSurvey.onload = () => {
-            ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-          };
+          ctx.drawImage(vectorStateS2, 1990, 1500, 360, 360);
         });
-      };
-      nodeFull1.onload = () => {
+        button.addEventListener("mouseout", () => {
+          ctx.fillStyle = "#311f1f";
+          ctx.fillRect(1990, 1500, 360, 360);
+          ctx.drawImage(vectorStateS1, 1990, 1500, 360, 360);
+        });
+      } else if (currentState === "state4") {
         ctx.drawImage(nodeFull1, 1660, 420, 360, 360);
         ctx.drawImage(nodeFull1, 1300, 780, 360, 360);
         ctx.drawImage(nodeFull1, 1990, 1140, 360, 360);
-      };
-      nodeFull2.onload = () => {
         ctx.drawImage(nodeFull2, 940, 420, 360, 360);
         ctx.drawImage(nodeFull2, 580, 780, 360, 360);
-      };
-      nodeFull3.onload = () => {
         ctx.drawImage(nodeFull3, 1660, 780, 360, 360);
         ctx.drawImage(nodeFull3, 580, 1500, 360, 360);
         ctx.drawImage(nodeFull3, 1300, 1140, 360, 360);
-      };
-      nodeFull4.onload = () => {
         ctx.drawImage(nodeFull4, 940, 1500, 360, 360);
-      };
-      pipelineFullH.onload = () => {
         ctx.drawImage(pipelineFullH, 1300, 420, 360, 360);
         ctx.drawImage(pipelineFullH, 940, 780, 360, 360);
         ctx.drawImage(pipelineFullH, 1660, 1140, 360, 360);
-      };
-      pipelineV.onload = () => {
         ctx.drawImage(pipelineFullV, 940, 780, 360, 360);
         ctx.drawImage(pipelineFullV, 940, 1140, 360, 360);
-      };
-      vectorTutorial.onload = () => {
-        ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
-      };
-      vectorUnity.onload = () => {
-        ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-      };
-    } else if (currentState === "state4") {
-      vectorTutorial.src = vectorStateT[1];
-      vectorUnity.src = vectorStateU[1];
-      vectorSurvey.src = vectorStateS[1];
-      nodeFull1.onload = () => {
-        ctx.drawImage(nodeFull1, 1660, 420, 360, 360);
-        ctx.drawImage(nodeFull1, 1300, 780, 360, 360);
-        ctx.drawImage(nodeFull1, 1990, 1140, 360, 360);
-      };
-      nodeFull2.onload = () => {
-        ctx.drawImage(nodeFull2, 940, 420, 360, 360);
-        ctx.drawImage(nodeFull2, 580, 780, 360, 360);
-      };
-      nodeFull3.onload = () => {
-        ctx.drawImage(nodeFull3, 1660, 780, 360, 360);
-        ctx.drawImage(nodeFull3, 580, 1500, 360, 360);
-        ctx.drawImage(nodeFull3, 1300, 1140, 360, 360);
-      };
-      nodeFull4.onload = () => {
-        ctx.drawImage(nodeFull4, 940, 1500, 360, 360);
-      };
-      pipelineFullH.onload = () => {
-        ctx.drawImage(pipelineFullH, 1300, 420, 360, 360);
-        ctx.drawImage(pipelineFullH, 940, 780, 360, 360);
-        ctx.drawImage(pipelineFullH, 1660, 1140, 360, 360);
-      };
-      pipelineV.onload = () => {
-        ctx.drawImage(pipelineFullV, 940, 780, 360, 360);
-        ctx.drawImage(pipelineFullV, 940, 1140, 360, 360);
-      };
-      vectorTutorial.onload = () => {
-        ctx.drawImage(vectorTutorial, 580, 1140, 360, 360);
-      };
-      vectorUnity.onload = () => {
-        ctx.drawImage(vectorUnity, 1990, 780, 360, 360);
-      };
-      vectorSurvey.onload = () => {
-        ctx.drawImage(vectorSurvey, 1990, 1500, 360, 360);
-      };
-    }
-  }
+        ctx.drawImage(vectorStateT2, 580, 1140, 360, 360);
+        ctx.drawImage(vectorStateU2, 1990, 780, 360, 360);
+        ctx.drawImage(vectorStateS2, 1990, 1500, 360, 360);
+      }
+    };
+    drawCanvas();
+  }, [currentState]);
 
   return (
     <>
@@ -375,22 +272,24 @@ function Level2() {
                 id="myButton"
                 className="LevelButton buttonTutorial-position"
               >
-                Finish Coursera Tutorial
+                Join our Slack Channel
               </button>
               <button className="LevelButton buttonSurvey-position disabled">
-                Join our Slack Channel
+                Finish Unity Tutorial
               </button>
               <div className="tank"></div>
             </>
           )}
           {currentState === "state3" && (
             <>
-              <button
-                id="myButton"
-                className="LevelButton buttonSurvey-position"
-              >
-                Join our Slack Channel
-              </button>
+              <a href="https://coursera.org/projects/unity-absolute-beginners-getting-started">
+                <button
+                  id="myButton"
+                  className="LevelButton buttonSurvey-position"
+                >
+                  Finish Unity Tutorial
+                </button>
+              </a>
               <div className="tank"></div>
             </>
           )}
@@ -418,5 +317,4 @@ function Level2() {
     </>
   );
 }
-
 export default Level2;
