@@ -8,7 +8,7 @@ function Level2() {
   //if unity is finished but tutorial is not finished = state2
   //if only survey is not finished = state3
   //all finished = state4
-  const [currentState, setCurrentState] = useState("state3");
+  const [currentState, setCurrentState] = useState("state1");
   const navigate = useNavigate();
   const handleUnity = () => {
     navigate("/UnityInstruction");

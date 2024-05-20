@@ -243,10 +243,10 @@ background-color: #57068C
 }
 .label{
   position: absolute;
-  top: 62%; 
+  top: 62.4%; 
   left: 17.5%;
   transform: translate(-50%, -50%);
-  width: 10vw;
+  width: 11vw;
 }
 .label-text{
   font-family: 'Grandstander', sans-serif;
@@ -254,7 +254,17 @@ background-color: #57068C
   font-size: 0.7vw;
   color:#452720;
   position: absolute;
-  top: 61.8%; 
+  top: 61.5%; 
+  left: 17.2%;
+  transform: translate(-50%, -50%);
+}
+.label-text2{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 0.7vw;
+  color:#452720;
+  position: absolute;
+  top: 63%; 
   left: 17.2%;
   transform: translate(-50%, -50%);
 }
