@@ -184,15 +184,13 @@ function Level1() {
           <p className="tank-text-l text-center text-position-tank3">
             Modality: {modality}
           </p>
-          {/* <img
+          <img
             src="https://s2.loli.net/2024/03/14/gje5KCnMpRGTdm3.png"
             className="label"
             alt="label"
           />
-          <a className="label-text text-center" href={portalLink}>
-            {" "}
-            Wanna change session?{" "}
-          </a> */}
+          <p className="label-text text-center">Wanna change session?</p>
+          <p className="label-text2 text-center">Contact: xxxx@gmail.com</p>
           {currentState === "state1" && (
             <>
               <a href={portalLink}>
