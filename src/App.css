@@ -1,0 +1,420 @@
+/* customization in NavBar*/
+.custom-NavBar{
+background-color: #57068C
+}
+
+/* customization in LoginPage*/
+.login-container{
+  display: flex;
+  height: 80vh;
+  background-color: #2582e3; 
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.login-box{
+    display: flex;
+    height: 60%;
+    width: 60%;
+    background-color: #ffffff; 
+    border: 5px solid #bedbf6;
+    border-radius: 10px;
+    box-shadow: 10px 10px #9dc9f3;
+    position: relative;
+}
+.loginHead{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 700;
+  font-size: 2.5vw;
+  color:#142b43;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+}
+.alertBox{
+  background-color: #e9e9e9;
+  width: 75%;
+  height: 7vh;
+  border-left: 3px solid #2582e3;
+  position: absolute;
+  top: 32%;
+  left: 15%;
+}
+.alert{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 300;
+  font-size: 1.1vw;
+  color:#142b43;
+}
+.input-pos{
+  position: absolute;
+  top: 53%;
+  left: 15%;
+}
+
+/* customization in Welcome*/
+.second-image-container{
+  position: relative
+}
+.third-image-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.board-size{
+  height: auto;
+  width: 50vw;
+}
+.fourth-text-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:70%;
+}
+@font-face {
+  font-family: "Grandstander";
+  src: url("src/assets/Grandstander-VariableFont_wght.ttf") format("truetype");
+}
+.custom-font{
+  font-family: 'Grandstander', sans-serif;
+  color: #452720;
+}
+.h-size{
+  font-size: 2.5vw;
+}
+.p-size{
+  font-size: 1.2vw;
+}
+.fade-in {
+  opacity: 0; 
+  animation: fadeInAnimation 1s ease forwards;
+}
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0; 
+    transform: translateY(-50px); 
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+.arrow-container {
+  position: absolute;
+  top: 83%;
+  left: 59%;
+  width: 1.2vw;
+  opacity: 0;
+  animation: IconAnimation 1s ease forwards infinite; 
+}
+
+@keyframes IconAnimation {
+  from {
+    opacity: 0; 
+    transform: translateX(-10px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); 
+  }
+}
+
+/* customization in Level 1 & Level 2*/
+.LevelButton{
+    width: 10%;
+    height:5%;
+    background-color: #E3C563;
+    border-radius: 15px;
+    border: 3px solid #925753;
+    font-family: 'Grandstander', sans-serif;
+    font-weight: 550;
+    font-size: 0.9vw;
+    color: #452720;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 4px 4px #925753;
+}
+.LevelButton:hover {
+  transform: translate(-45%,-45%);
+  box-shadow: 0px 0px #925753;
+}
+.disabled{
+  opacity: 0.5;
+}
+.DeadlineText{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 1vw;
+  color: #ffffff;
+}
+.titleHead{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 800;
+  font-size: 2vw;
+  color:#452720;
+  
+}
+
+.title{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 1vw;
+  padding-left: 15%;
+  padding-right: 15%;
+  color:#452720;
+  line-height: 1.2;
+}
+
+/* customization in Level 1*/
+.tank-text{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 1vw;
+  color:#25213c;
+  line-height: 1.2;
+}
+.tank-text-l{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 0.9vw;
+  color:#25213c;
+  line-height: 1.2;
+}
+.text-position-tank1{
+  position: absolute;
+  top: 45%; 
+  left: 17%;
+  transform: translate(-50%, -50%);
+  padding-left: 36.5%;
+  padding-right: 36.5%;
+}
+.text-position-tank2{
+  position: absolute;
+  top: 49%; 
+  left: 17%;
+  transform: translate(-50%, -50%);
+  padding-left: 30%;
+  padding-right: 30%;
+}
+.text-position-tank3{
+  position: absolute;
+  top: 51%; 
+  left: 17%;
+  transform: translate(-50%, -50%);
+  padding-left: 30%;
+  padding-right: 30%;
+}
+.button1-position{
+  position: absolute;
+  top: 32%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+.deadline1-position{
+  position: absolute;
+  top: 37%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+.button2-position{
+  position: absolute;
+  top: 32%;
+  left: 67%;
+  transform: translate(-50%, -50%);
+}
+.deadline2-position{
+  position: absolute;
+  top: 37%;
+  left: 67%;
+  transform: translate(-50%, -50%);
+}
+.titleHead-position-level1{
+  position: absolute;
+  top: 8%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title-position-level1{
+  position: absolute;
+  top: 12.5%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.label{
+  position: absolute;
+  top: 62%; 
+  left: 17.5%;
+  transform: translate(-50%, -50%);
+  width: 10vw;
+}
+.label-text{
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 0.7vw;
+  color:#452720;
+  position: absolute;
+  top: 61.8%; 
+  left: 17.2%;
+  transform: translate(-50%, -50%);
+}
+.NextLevelHint{
+  position: absolute;
+  top: 72%; 
+  left: 91%;
+  transform: translate(-50%, -50%);
+  width: 13vw;
+  height: 5vw;
+  animation: fadeInAnimation2 1s ease forwards;;
+}
+.NextLevelHint-text{
+  position: absolute;
+  top: 70.5%; 
+  left: 86.5%;
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 500;
+  font-size: 1.2vw;
+  color:#452720;
+  animation: fadeInAnimation2 1s ease forwards;;
+}
+.Next-level-arrow{
+  position: absolute;
+  top: 71%; 
+  left: 95%;
+  width: 1.2vw;
+  animation: IconAnimation 1s ease forwards infinite; 
+}
+@keyframes fadeInAnimation2 {
+  from {
+    opacity: 0; 
+  }
+  to {
+    opacity: 1; 
+  }
+}
+
+/*customization in Level 2*/
+.titleHead-position-level2{
+  position: absolute;
+  top: 5%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title-position-level2{
+  position: absolute;
+  top: 8%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.buttonUnity-position{
+  position: absolute;
+  top: 20%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+.buttonTutorial-position{
+  position: absolute;
+  top: 42%;
+  left: 14%;
+  transform: translate(-50%, -50%);
+}
+.buttonSurvey-position{
+  position: absolute;
+  top: 53%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+}
+.tank {
+  width: 76vw;
+  height: 25vw;
+  background-color: #ffffff;
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 20px;
+  border: 2px solid #142b43;
+}
+
+.water-forword {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2582e3;
+  animation: fillWater 5s forwards;
+}
+.water-back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color:#9dc9f3;
+  animation: fillWater 4.5s forwards;
+}
+@keyframes fillWater {
+  0% {
+    height: 0; 
+  }
+  100% {
+    height: 80%; 
+  }
+}
+.tank-text1{
+  opacity: 0;
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 800;
+  font-size: 5vw;
+  position: absolute;
+  top: 18%;
+  left: 33%;
+  color:#25213c;
+  animation: fadeInAnimation3 1s ease forwards;
+}
+.tank-text2{
+  opacity: 0;
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 400;
+  font-size: 2.1vw;
+  position: absolute;
+  top: 43%;
+  left: 33%;
+  color:#25213c;
+  animation: fadeInAnimation3 1s ease forwards;
+}
+.tank-text3{
+  opacity: 0;
+  font-family: 'Grandstander', sans-serif;
+  font-weight: 600;
+  font-size: 2.65vw;
+  position: absolute;
+  top: 68%;
+  left: 33%;
+  color:#25213c;
+  animation: fadeInAnimation3 1s ease forwards;
+}
+
+@keyframes fadeInAnimation3 {
+  from {
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0px); 
+  }
+}
+
+/*customization in unityinstruction*/
+.instruction-container{
+  height: 100vh;
+  background-color: #ffffff; 
+  position: relative;
+  padding-left: 10% ;
+  padding-top: 6% ;
+}
+.instruction-box{
+  padding-top: 2% ;
+  padding-bottom: 2% ;
+}
